@@ -1,4 +1,5 @@
 
+
 pipeline {
   
   agent any
@@ -8,7 +9,9 @@ pipeline {
     stage("checkout") {
     
       steps {
-        echo 'checkout the code...!'  
+        echo 'checkout the code start...!'
+        delay(10)
+        echo 'checkout the code end...!'  
       }
       
     }
@@ -33,4 +36,12 @@ pipeline {
     
   }
   
+}
+
+
+
+def delay(num) {
+    for (int i = 0; i < num; i++) {
+        sleep(time:1,unit:"SECONDS")
+    }
 }
