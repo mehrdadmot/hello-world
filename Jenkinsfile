@@ -6,12 +6,22 @@ pipeline {
   
   stages {
     
-    stage("checkout") {
-    
-      steps {
-        echo 'checkout the code start...!'
-        delay(10)
-        echo 'checkout the code end...!'  
+    stage("checkout_and_catch") {
+      parallel {
+        stage("checkout") {
+          steps {
+            echo 'checkout the code start...!'
+            delay(10)
+            echo 'checkout the code end...!'  
+          }
+        }
+        stage("catch_abort") {
+          steps {
+            echo 'catch_abort start...!'
+            delay(10)
+            echo 'catch_abort end...!'  
+          }    
+        }
       }
       
     }
